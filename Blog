@@ -1,0 +1,95 @@
+Predicting Crime Domains in India Using Machine Learning and SMOTE
+1. Introduction
+Crime prediction is a critical area of research that empowers law enforcement agencies to anticipate and prevent criminal activities effectively. This case study presents a machine learning approach for predicting crime domains (types of crimes) using contextual and demographic data.
+
+By combining the Random Forest Classifier with SMOTE (Synthetic Minority Over-sampling Technique), the model addresses class imbalance — ensuring fair and accurate predictions across diverse crime categories.
+2. Dataset Overview
+The dataset used, `crime_dataset_india.csv`, provides detailed information about crime incidents across various Indian cities.
+
+Key Attributes:
+- Date and Time of Occurrence
+- City
+- Victim’s Age and Gender
+- Weapon Used
+- Number of Police Deployed
+- Crime Domain (Target Variable)
+
+Data preprocessing involved handling missing values and extracting temporal features such as year, month, weekday, hour, and minute for pattern analysis.
+3. Methodology / Approach
+The project followed a structured machine learning pipeline comprising data cleaning, feature engineering, class balancing, and model training.
+
+a) Data Preprocessing
+- Missing numerical values were replaced using median imputation, while categorical columns used mode imputation.
+- Label encoding converted categorical variables (e.g., City, Gender, Weapon Used) into numerical form.
+
+b) Handling Imbalance with SMOTE
+The dataset exhibited class imbalance, with some crime types underrepresented.
+SMOTE was applied to synthetically generate samples of minority classes, creating a balanced dataset that promotes unbiased model learning.
+
+c) Model Building: Random Forest Classifier
+A Random Forest Classifier with 200 estimators was trained on the resampled data.
+This model was selected for its robustness against overfitting, capability to handle both categorical and numerical data, and strong performance in pattern recognition tasks.
+
+d) Evaluation Metrics
+The model’s performance was measured using Accuracy, Confusion Matrix, Precision, Recall, and F1-Score.
+4. Results and Discussion
+The trained Random Forest model achieved an accuracy of 73.21%, showcasing strong predictive capability.
+
+Confusion Matrix:
+[[1895  267   67   73]
+ [ 146 1643  102  420]
+ [  44  106 2080   38]
+ [ 277  774  145 1103]]
+
+Classification Report:
+
+| Class | Precision | Recall | F1-Score | Support |
+|:------|:-----------:|:--------:|:----------:|:---------:|
+| 0 | 0.80 | 0.82 | 0.81 | 2302 |
+| 1 | 0.59 | 0.71 | 0.64 | 2311 |
+| 2 | 0.87 | 0.92 | 0.89 | 2268 |
+| 3 | 0.68 | 0.48 | 0.56 | 2299 |
+
+Overall Accuracy: 73%
+5. Visualization Gallery
+To gain insights into the model and dataset, several visualizations were generated:
+
+- Feature Importance Plot – Highlights which features most influenced the predictions.
+- Confusion Matrix Heatmap – Visualizes performance across crime categories.
+- SMOTE Distribution Plot – Shows data balancing after applying SMOTE.
+6. Prediction Example
+An example input to the trained model demonstrates its real-world usability.
+
+Example Input:
+City: Pune
+Victim Age: 25
+Victim Gender: Female
+Weapon Used: Blunt Object
+Police Deployed: 5
+Occur Year: 2025
+Occur Month: 10
+Occur Day: 3
+Occur Weekday: 3 (Thursday)
+Occur Hour: 14
+Occur Minute: 30
+
+Predicted Output: Other Crime
+Prediction Probabilities: [0.205, 0.43, 0.045, 0.32]
+7. Conclusion
+This case study demonstrates how machine learning can effectively support law enforcement in identifying and classifying crime domains.
+
+By combining Random Forest with SMOTE resampling, the model successfully mitigates data imbalance and achieves reliable accuracy.
+
+Future Enhancements:
+- Incorporate geospatial and socioeconomic data
+- Apply hyperparameter tuning and feature selection
+- Integrate real-time prediction dashboards
+8. References / Tools Used
+Tools & Libraries:
+- Python 3.x
+- pandas, scikit-learn, imbalanced-learn
+- RandomForestClassifier, SMOTE
+
+Dataset:
+CrimeDataBD – crime_dataset_india.csv (Kaggle)
+https://www.kaggle.com/datasets/sahilkumarwar/crime-data-indiacsv/data
